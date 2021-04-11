@@ -17,6 +17,11 @@
 		 * Почему формула именно такая — читайте в википедии 
 		 * http://ru.wikipedia.org/wiki/Оттенки_серого
 		 */
+		const double Red = 0.299;
+		const double Green = 0.587;
+		const double Blue = 0.114;
+		const double Shades = 255;
+		
 		public static double[,] ToGrayscale(Pixel[,] original)
 		{			
 			var grayScale = new double[original.GetLength(0), original.GetLength(1)]; 
@@ -24,7 +29,7 @@
             {
 				for (var y=0; y < original.GetLength(1); y++)
                 {
-					grayScale[x,y] =(0.299 * original[x, y].R + 0.587 * original[x, y].G + 0.114 * original[x, y].B) / 255;
+					grayScale[x,y] =(Red * original[x, y].R + Green * original[x, y].G + Blue * original[x, y].B) / Shades;
 				}
             }
 			return grayScale;
